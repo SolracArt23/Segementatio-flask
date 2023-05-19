@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Carga de modelos</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+    </head>
+    <body>
+        <h1>Selecciona el modelo</h1>
+        <form action="/" method="POST" enctype="multipart/form-data">
+
+            <select name="opciones">
+                {% for valor in lista %}
+                    <option>{{valor}}</option>
+                {% endfor %}
+            </select>
+            <br/>
+        <!-- Cargar imagen -->
+            <input type="file" name="imagen"accept="image/png, image/jpeg">
+            <input type="submit">
+            {% if img_origin != None %}
+
+            <img src="{{ url_for('static', filename=img_origin) }}" alt="Mi imagen">
+            <img src="{{ url_for('static', filename=img_pre) }}" alt="Mi imagen">
+
+            {% endif %}
+        </form>
+    </body>
+</html>
